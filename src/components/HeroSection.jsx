@@ -26,15 +26,13 @@ export const HeroSection = () => {
               <span className="opacity-0 animate-fade-in"> Graduated</span>
               <span className="text-primary opacity-0 animate-fade-in-delay-1">
                 {" "}
-                East West University
+                Govt Rajendra College
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto md:mx-0 opacity-0 animate-fade-in-delay-3">
-              I'm a passionate Computer Science graduate from East West University, 
-              with a concentration in Software Engineering. Throughout my academic journey, 
-              I've developed a strong foundation in software development, problem-solving, 
-              and modern programming practices.
+              I design and develop modern, responsive websites that blend creativity with performance. As a <b>Full-stack developer</b>, 
+              I focus on clean code, smooth user experiences, and visuals that make a strong impact.
             </p>
 
             <div className="pt-4 opacity-0 animate-fade-in-delay-4">
