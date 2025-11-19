@@ -52,8 +52,8 @@ export const HeroSection = () => {
             <div className="relative rounded-full bg-gradient-to-br from-primary/20 to-background p-1 shadow-lg">
               <div className="bg-background rounded-full p-2">
                 <img 
-                  src="/projects/shamim1.png" 
-                  alt="Shamim Chowdhury"
+                  src="/projects/anamul.png" 
+                  alt="Anamul Haque"
                   className="rounded-full w-full h-auto object-cover aspect-square shadow-xl"
                 />
               </div>
