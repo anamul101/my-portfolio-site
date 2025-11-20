@@ -11,14 +11,14 @@ export const HeroSection = () => {
         <div className="md:basis-2/3 w-full text-center md:text-left z-10">
           <div className="space-y-6">
             <h1 className="text-2xl md:text-6xl font-bold tracking-tight">
-              <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
+              {/* <span className="opacity-0 animate-fade-in"> Full-stack developer</span> */}
               <span className="text-primary opacity-0 animate-fade-in-delay-1">
                 {" "}
-                Anamul
+                Full-Stack 
               </span>
               
               <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
-                Haque
+                Developer
               </span>
             </h1>
             
