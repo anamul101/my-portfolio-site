@@ -6,25 +6,29 @@ const skills = [
   { name: "HTML/CSS", level: 95, category: "frontend" },
   { name: "JavaScript", level: 90, category: "frontend" },
   { name: "Next.js", level: 80, category: "frontend" },
+  { name: "React", level: 85, category: "frontend" },
+  { name: "Tailwind", level: 95, category: "frontend" },
+  { name: "Bootstrap", level: 80, category: "frontend" },
   { name: "OOP", level: 80, category: "frontend" },
+  { name: "Redux", level: 80, category: "frontend" },
+  { name: "WordPress", level: 100, category: "frontend" },
 
   // Backend
   { name: "Node.js", level: 80, category: "backend" },
-  { name: "Java", level: 75, category: "backend" },
+  { name: "Express.js", level: 80, category: "backend" },
   { name: "MongoDB", level: 70, category: "backend" },
-  { name: "Python", level: 65, category: "backend" },
-  { name: "C / C++", level: 60, category: "backend" },
-  { name: "MySQL", level: 60, category: "backend" },
+  { name: "NoSQL", level: 60, category: "backend" },
 
   // Tools
   { name: "Git/GitHub", level: 90, category: "tools" },
   { name: "Docker", level: 70, category: "tools" },
-  { name: "Data Structures & Algorithms", level: 85, category: "tools" },
-  { name: "Android App ", level: 95, category: "tools" },
+  { name: "Figma", level: 85, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
 
   // Soft Skills
   { name: "Team Collaboration", level: 90, category: "SoftSkills" },
+  { name: "MS Word", level: 90, category: "SoftSkills" },
+  { name: "PowerPoint", level: 90, category: "SoftSkills" },
   { name: "Communication", level: 95, category: "SoftSkills" },
   { name: "Time Management", level: 80, category: "SoftSkills" },
   { name: "Quick Learner", level: 75, category: "SoftSkills" },
@@ -43,7 +47,7 @@ export const SkillsSection = () => {
   );
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           My <span className="text-primary"> Skills</span>
         </h2>
@@ -65,7 +69,7 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredSkills.map((skill, key) => (
             <div
               key={key}

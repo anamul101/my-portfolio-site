@@ -6,7 +6,7 @@ export const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-4 py-16"
     >
-      <div className="flex flex-col-reverse md:flex-row w-full max-w-6xl items-center gap-8 md:gap-12">
+      <div className="flex flex-col-reverse md:flex-row w-full max-w-7xl items-center gap-8 md:gap-12">
         {/* Text Content */}
         <div className="md:basis-2/3 w-full text-center md:text-left z-10">
           <div className="space-y-6">

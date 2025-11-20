@@ -4,7 +4,7 @@ export const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-4 relative">
       {" "}
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           About <span className="text-primary"> Me</span>
         </h2>
@@ -12,25 +12,24 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Passionate Software Engineer
+              Passionate Web Developer
             </h3>
 
-            <p className="text-muted-foreground">
-              Hi, I’m Shamim Chowdhury—a recent graduate from the Computer Science & Engineering department at East West University, 
-              with a specialization in Software Engineering. I’m deeply passionate about technology and love turning ideas into functional, 
-              user-friendly software.
+            <p className="text-muted-foreground text-justify">
+              With a passion for clean code, modern design, and problem-solving, 
+              I create front-end interfaces that feel smooth and engaging, while building reliable and efficient 
+              back-end systems that power them. I focus on maintainability, scalability, 
+              and best-practice development to deliver long-lasting results.
             </p>
 
-            <p className="text-muted-foreground">
-              During my academic years, I gained hands-on experience with various programming languages, 
-              software development methodologies, and collaborative projects. 
-              Whether it’s solving complex problems or building intuitive user interfaces, 
-              I enjoy every step of the development process.
+            <p className="text-muted-foreground text-justify">
+              I’ve collaborated with businesses of all sizes from small startups to established 
+              companies helping them turn ideas into polished digital experiences. 
+              If you’re looking for someone to bring your next project to life, I’m always excited to collaborate.
             </p>
-            <p className="text-muted-foreground">
-              Outside of coding, I enjoy playing guitar, badminton, and watching anime, which helps keep my creativity and adaptability sharp. 
-              I’m currently looking for opportunities where I can apply my skills, grow as a developer, 
-              and contribute to meaningful software solutions.
+            <p className="text-muted-foreground text-justify">
+              When I’m not coding, you’ll find me outdoors, 
+              listening to music, traveling, and exploring new adventures that inspire creativity.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
