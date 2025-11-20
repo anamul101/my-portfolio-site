@@ -46,9 +46,9 @@ export const HeroSection = () => {
         {/* Image Container */}
         <div className="basis-1/3 flex justify-center md:justify-end w-full max-w-xs md:max-w-md">
           <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full bg-primary/24 blur-xl animate-pulse"></div>
             <div className="relative rounded-full bg-gradient-to-br from-primary/20 to-background p-1 shadow-lg">
-              <div className="bg-background rounded-full p-2">
+              <div className="bg-black/40 rounded-full p-2">
                 <img 
                   src="/projects/anamul.png" 
                   alt="Anamul Haque"
