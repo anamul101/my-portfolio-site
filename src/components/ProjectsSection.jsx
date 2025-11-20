@@ -1,34 +1,48 @@
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { ArrowRight, ExternalLink, Github,Info } from "lucide-react";
 
 const projects = [
   {
     id: 1,
-    title: "SaaS Landing Page",
+    title: "Used Products Resale",
     description: "A beautiful landing page app using React and Tailwind.",
-    image: "/projects/project1.png",
-    tags: ["JavaScript", "TailwindCSS", "Next.js","Node.js"],
-    demoUrl: "#",
-    githubUrl: "#",
+    image: "/projects/project1.jpg",
+    tags: ["JavaScript", "ReactJs", "NodeJs", "ExpressJs", "MongoDB", "Firebase", "TailwindCSS"],
+    demoUrl: "https://classice-phone-dc43a.web.app/",
+    githubUrl: "https://github.com/anamul101/Classice-phone-client",
+    projectdetailsUrl: "/projects/used-products-resale",
   },
   {
     id: 2,
-    title: "Orbit Analytics Dashboard",
+    title: "Service Review App",
     description:
-      "Interactive analytics dashboard with data visualization and filtering capabilities.",
-    image: "/projects/project2.png",
-    tags: ["Android App", "Python", "MySQL","OOP"],
-    demoUrl: "#",
-    githubUrl: "#",
+      "Interactive Service Review App with data visualization.",
+    image: "/projects/project2.jpg",
+    tags: ["ReactJs", "NodeJs", "ExpressJs", "MongoDB", "Firebase", "Stripe", "JWT", "Tailwind CSS",],
+    demoUrl: "https://mw-photography.web.app/",
+    githubUrl: "https://github.com/anamul101/photography-studio-client",
+    projectdetailsUrl: "/projects/service-review-app",
   },
   {
     id: 3,
-    title: "E-commerce Platform",
+    title: "Learning Platform",
     description:
-      "Full-featured e-commerce platform with user authentication and payment processing.",
-    image: "/projects/project3.png",
-    tags: ["MongoDB", "Java", "Stripe"],
-    demoUrl: "#",
-    githubUrl: "#",
+      "Full-featured Learning platform with user authentication",
+    image: "/projects/project3.jpg",
+    tags: ["React", "NodeJs","Firebase","TailwindCSS","React Router Dom", "SwetAlert","DaisyUI"],
+    demoUrl: "https://es6-tutorial-1c39e.web.app/",
+    githubUrl: "https://github.com/anamul101/learning-platform-clinet",
+    projectdetailsUrl: "/projects/learning-platform",
+  },
+  {
+    id: 4,
+    title: "Quiz Makers web application",
+    description:
+      "Quiz Makers web application with dynamic quiz generation and real-time scoring.",
+    image: "/projects/project4.jpg",
+    tags: ["React","TailwindCSS","React Router Dom","DaisyUI"],
+    demoUrl: "https://grand-palmier-d59eab.netlify.app/",
+    githubUrl: "https://github.com/anamul101/quiez-assignment",
+    projectdetailsUrl: "/projects/quiz-makers-app",
   },
 ];
 
@@ -88,6 +102,13 @@ export const ProjectsSection = () => {
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <Github size={20} />
+                    </a>
+                    <a
+                      href={project.projectdetailsUrl}
+                      target="_blank"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      <Info size={20} />
                     </a>
                   </div>
                 </div>
