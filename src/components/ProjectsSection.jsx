@@ -273,7 +273,13 @@ export const ProjectsSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-
+              <h3 className="text-xl font-semibold mt-4 mb-1 text-primary">
+                {" "}
+                {project.title}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-2">
+                {project.description}
+              </p>
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, index) => (
@@ -286,30 +292,26 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
                 <div className="flex justify-between items-center">
                   <div className="flex justify-between items-center space-x-4">
-                   <div className="flex space-x-3">
-                     <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <ExternalLink size={25} />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={25} />
-                    </a>
-                   </div>
+                    <div className="flex space-x-3">
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      >
+                        <ExternalLink size={25} />
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      >
+                        <Github size={25} />
+                      </a>
+                    </div>
                     {/* <button
                       onClick={() => handleProjectClick(project)}
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
