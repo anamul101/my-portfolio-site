@@ -20,16 +20,33 @@ const projects = [
     githubUrl: "https://github.com/anamul101/Classice-phone-client",
     projectdetailsUrl: "/projects/used-products-resale",
     // Add more details for the popup
+    completedAt: "December 28, 2022",
     fullDescription:
-      "A comprehensive e-commerce platform for buying and selling used products with user authentication, product management, and secure payments.",
+      "This project is a complete resale marketplace where users can buy and sell used products. The platform includes separate dashboards for users, sellers, and admins, along with secure authentication and product management features.",
     features: [
-      "User Authentication",
-      "Product Management",
-      "Real-time Chat",
-      "Secure Payments",
-      "Admin Dashboard",
+      "Home Page",
+      "Showcases product advertisements",
+      "Displays product categories for easy navigation",
+      "User Dashboard",
+      "Authentication System",
+      "Logout functionality",
+      "Admin Controls",
+      "Verify sellers",
+      "Delete any product listings",
+      "Admin Panel Management",
+      "Add or update seller and buyer roles",
+      "Manage platform users efficiently",
     ],
-    technologies: ["React", "Node.js", "MongoDB", "Firebase", "Tailwind CSS"],
+    technologies: [
+      "ReactJs",
+      "NodeJs",
+      "ExpressJs",
+      "MongoDB",
+      "Firebase",
+      "Stripe",
+      "JWT",
+      "Tailwind CSS",
+    ],
   },
   {
     id: 2,
@@ -49,14 +66,16 @@ const projects = [
     demoUrl: "https://mw-photography.web.app/",
     githubUrl: "https://github.com/anamul101/photography-studio-client",
     projectdetailsUrl: "/projects/service-review-app",
+    completedAt: "March 15, 2023",
     fullDescription:
-      "A platform for service providers to manage their services and for customers to leave reviews with data visualization features.",
+      "A comprehensive service review platform that allows users to browse services, leave reviews, and visualize ratings through interactive charts and graphs.",
     features: [
-      "Service Management",
+      "Service Listings",
       "Review System",
       "Data Visualization",
       "Payment Integration",
       "User Profiles",
+      "Rating System",
     ],
     technologies: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
   },
@@ -77,6 +96,7 @@ const projects = [
     demoUrl: "https://es6-tutorial-1c39e.web.app/",
     githubUrl: "https://github.com/anamul101/learning-platform-clinet",
     projectdetailsUrl: "/projects/learning-platform",
+    completedAt: "June 10, 2023",
     fullDescription:
       "An interactive learning platform offering various courses with progress tracking and user authentication.",
     features: [
@@ -85,12 +105,13 @@ const projects = [
       "User Authentication",
       "Interactive Lessons",
       "Admin Panel",
+      "Certificate Generation",
     ],
     technologies: ["React", "Firebase", "Tailwind CSS", "React Router"],
   },
   {
     id: 4,
-    title: "Quiz Makers web application",
+    title: "Quiz Makers Web Application",
     description:
       "Quiz Makers web application with dynamic quiz generation and real-time scoring.",
     image: "/projects/project4.jpg",
@@ -98,6 +119,7 @@ const projects = [
     demoUrl: "https://grand-palmier-d59eab.netlify.app/",
     githubUrl: "https://github.com/anamul101/quiez-assignment",
     projectdetailsUrl: "/projects/quiz-makers-app",
+    completedAt: "August 22, 2023",
     fullDescription:
       "A dynamic quiz application that allows users to create and take quizzes with real-time scoring and analytics.",
     features: [
@@ -111,24 +133,32 @@ const projects = [
   },
   {
     id: 5,
-    title: "Quiz Makers web application",
-    description:
-      "Quiz Makers web application with dynamic quiz generation and real-time scoring.",
+    title: "E-commerce Platform",
+    description: "Full-stack e-commerce platform with payment integration",
     image: "/projects/project4.jpg",
-    tags: ["React", "TailwindCSS", "React Router Dom", "DaisyUI"],
-    demoUrl: "https://grand-palmier-d59eab.netlify.app/",
-    githubUrl: "https://github.com/anamul101/quiez-assignment",
-    projectdetailsUrl: "/projects/quiz-makers-app",
-    fullDescription:
-      "A dynamic quiz application that allows users to create and take quizzes with real-time scoring and analytics.",
-    features: [
-      "Quiz Creation",
-      "Real-time Scoring",
-      "Analytics Dashboard",
-      "User Management",
-      "Multiple Question Types",
+    tags: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Stripe",
+      "TailwindCSS",
+      "Express.js"
     ],
-    technologies: ["React", "Tailwind CSS", "React Router", "Context API"],
+    demoUrl: "https://example-ecommerce.web.app/",
+    githubUrl: "https://github.com/anamul101/ecommerce-platform",
+    projectdetailsUrl: "/projects/ecommerce-platform",
+    completedAt: "November 5, 2023",
+    fullDescription:
+      "A complete e-commerce solution with product management, shopping cart, user authentication, and secure payment processing.",
+    features: [
+      "Product Catalog",
+      "Shopping Cart",
+      "User Authentication",
+      "Payment Processing",
+      "Order Management",
+      "Admin Dashboard",
+    ],
+    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
   },
 ];
 
@@ -147,10 +177,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           >
             <X size={24} />
           </button>
-          <h2 className="text-2xl font-bold text-primary">{project.title}</h2>
-          <p className="text-muted-foreground mt-2">
-            {project.fullDescription}
-          </p>
+          <h2 className="text-2xl text-start font-bold text-primary">
+            {project.title}
+          </h2>
         </div>
 
         {/* Content */}
@@ -163,10 +192,21 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               className="w-full h-64 object-cover rounded-lg"
             />
           </div>
+          
+          {/* Completion Date */}
+          {/* <div className="mb-4">
+            <span className="text-sm text-muted-foreground">
+              Completed on: <span className="text-white font-medium">{project.completedAt}</span>
+            </span>
+          </div> */}
 
+          <p className="text-muted-foreground my-2 text-start">
+            {project.fullDescription}
+          </p>
+          
           {/* Features */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3">Key Features</h3>
+            <h3 className="text-2xl font-semibold mb-3 text-start">Key Features</h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {project.features?.map((feature, index) => (
                 <li key={index} className="flex items-center gap-2">
@@ -179,7 +219,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
           {/* Technologies */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3">Technologies Used</h3>
+            <h3 className="text-2xl font-semibold mb-3 text-start">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies?.map((tech, index) => (
                 <span
@@ -192,41 +232,35 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Tags */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3">Tags</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
           {/* Links */}
-          <div className="flex gap-4 pt-4 border-t">
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              <ExternalLink size={16} />
-              Live Demo
-            </a>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              <Github size={16} />
-              View Code
-            </a>
+          <div className="flex justify-between items-center gap-4 pt-4 border-t">
+            <div className="flex gap-4">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                <ExternalLink size={16} />
+                Live Demo
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                <Github size={16} />
+                View Code
+              </a>
+            </div>
+            
+            {/* Completion Date - Right Side */}
+            <div className="flex justify-end items-center">
+              <span className="text-sm text-muted-foreground">
+                Completed on: <span className="text-white font-medium">{project.completedAt}</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -273,14 +307,13 @@ export const ProjectsSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <h3 className="text-xl font-semibold mt-4 mb-1 text-primary">
-                {" "}
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                {project.description}
-              </p>
               <div className="p-6">
+                <h3 className="text-xl font-semibold mb-1 text-primary">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, index) => (
                     <span
@@ -293,39 +326,31 @@ export const ProjectsSection = () => {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <div className="flex justify-between items-center space-x-4">
-                    <div className="flex space-x-3">
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                      >
-                        <ExternalLink size={25} />
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                      >
-                        <Github size={25} />
-                      </a>
-                    </div>
-                    {/* <button
-                      onClick={() => handleProjectClick(project)}
+                  <div className="flex space-x-3">
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
-                      <Info size={20} />
-                    </button> */}
-                    <button
-                      onClick={() => handleProjectClick(project)}
-                      className="flex items-center gap-2 px-2 py-2 hover:text-primary cursor-pointer border border-border rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+                      <ExternalLink size={20} />
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
-                      <Info size={25} />
-                      View Details
-                    </button>
+                      <Github size={20} />
+                    </a>
                   </div>
+                  <button
+                    onClick={() => handleProjectClick(project)}
+                    className="flex items-center gap-2 px-3 py-2 hover:text-primary cursor-pointer border border-border rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    <Info size={16} />
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>
