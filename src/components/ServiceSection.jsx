@@ -193,14 +193,14 @@ export default function ServiceSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {services.map((service) => (
             <div
               key={service.id}
-              className="group relative"
+              className="group relative "
             >
               {/* Card */}
-              <div className="relative cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-4 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 h-full overflow-hidden">
+              <div className="relative cursor-pointer bg-gradient-to-br from-gray-800/30 to-gray-900/30  rounded-xl p-4 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 h-full overflow-hidden">
                 
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-5">
