@@ -210,7 +210,7 @@ export default function ServiceSection() {
                 {/* Floating Icon Container */}
                 <div className="absolute left-1/2 -translate-x-1/2 z-20">
                   <div className={`relative w-20 h-20 bg-gradient-to-br  rounded-full border border-gradient-to-br from-gray-900 to-gray-800 border-gray-600  flex items-center justify-center shadow-2xl group-hover:rotate-[360deg] transition-all duration-1500 ease-out`}>
-                    <div className="text-white">
+                    <div className="text-primary">
                       {service.icon}
                     </div>
                     {/* Glow Effect */}
@@ -332,7 +332,7 @@ export default function ServiceSection() {
                 
                 {/* Icon Container */}
                 <div className={`relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 border border-gray-600 bg-opacity-10 rounded-2xl mb-4 group-hover:rotate-12 transition-all duration-500`}>
-                  <div className="text-white">
+                  <div className="text-primary">
                     {stat.icon}
                   </div>
                   {/* Glow Effect */}
