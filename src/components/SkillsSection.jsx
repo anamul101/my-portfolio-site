@@ -24,9 +24,11 @@ const skills = [
   { name: "Docker", level: 70, category: "tools" },
   { name: "Figma", level: 85, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
+  { name: "N8N", level: 50, category: "tools" },
 
   // Soft Skills
   { name: "Team Collaboration", level: 90, category: "SoftSkills" },
+  { name: "AI Prompt Engineering", level: 70, category: "SoftSkills" },
   { name: "MS Word", level: 90, category: "SoftSkills" },
   { name: "PowerPoint", level: 90, category: "SoftSkills" },
   { name: "Communication", level: 95, category: "SoftSkills" },
