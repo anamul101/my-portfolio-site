@@ -205,12 +205,13 @@ export const SkillsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent">
-            My <span className="text-primary">Skills</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Expertise across frontend, backend, tools, and soft skills
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          My <span className="text-primary"> Skills</span>
+        </h2>
+         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          Expertise across frontend, backend, tools, and soft skills
+        </p>
+         
         </div>
 
         {/* Category Filters */}

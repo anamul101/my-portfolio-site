@@ -184,12 +184,13 @@ export default function ServiceSection() {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent">
-            My <span className="text-primary">Services</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            I provide complete web development & WordPress solutions
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          My <span className="text-primary"> Services</span>
+        </h2>
+         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          I provide complete web development & WordPress solutions
+        </p>
+         
         </div>
 
         {/* Services Grid */}

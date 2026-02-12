@@ -359,7 +359,7 @@ export const ProjectsSection = () => {
 
         <div className="text-center mt-12">
           <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            className="cosmic-button w-fit flex items-center bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold mx-auto gap-2"
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/anamul101"
