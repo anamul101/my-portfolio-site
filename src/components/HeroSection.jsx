@@ -12,7 +12,7 @@ export const HeroSection = () => {
           <div className="space-y-6">
             <h1 className="text-2xl md:text-6xl font-bold tracking-tight">
               {/* <span className="opacity-0 animate-fade-in"> Full-stack developer</span> */}
-              <span className="text-primary opacity-0 animate-fade-in-delay-1">
+              <span className="bg-gradient-to-r from-purple-800 to-pink-600 inline-block text-transparent bg-clip-text opacity-0 animate-fade-in-delay-1">
                 {" "}
                 Full-Stack 
               </span>
