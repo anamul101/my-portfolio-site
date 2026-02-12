@@ -54,12 +54,12 @@ export const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Email</h4>
+                  <h4 className="font-medium text-start"> Email</h4>
                   <a
-                    href="mailto:shamim.chowdhury123@gmail.com"
+                    href="mailto:mohammadanamul0000@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    shamim.chowdhury123@gmail.com
+                   mohammadanamul0000@gmail.com
                   </a>
                 </div>
               </div>
@@ -68,12 +68,12 @@ export const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Phone</h4>
+                  <h4 className="font-medium  text-start"> Phone</h4>
                   <a
-                    href="tel:+880 1727395493"
+                    href="tel:+8801882473710"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +880 1727395493
+                    +880 1882473710
                   </a>
                 </div>
               </div>
@@ -82,9 +82,9 @@ export const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Location</h4>
+                  <h4 className="font-medium  text-start"> Location</h4>
                   <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Dhaka , Bangladesh
+                   Faridpur, Dhaka , Bangladesh
                   </a>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export const ContactSection = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="shamim chowdhury..."
+                  placeholder="Mohammad Anamul..."
                 />
               </div>
 
@@ -148,7 +148,7 @@ export const ContactSection = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="shamim.chowdhury123@gmail.com"
+                  placeholder="mohammadanamul0000@gmail.com"
                 />
               </div>
 
