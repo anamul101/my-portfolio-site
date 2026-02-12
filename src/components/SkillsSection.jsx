@@ -194,7 +194,7 @@ export const SkillsSection = () => {
   );
 
   return (
-    <section id="skills" className="mt-25 relative overflow-hidden">
+    <section id="skills" className="pt-20 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl" />
@@ -215,7 +215,7 @@ export const SkillsSection = () => {
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           {categories.map((category, key) => (
             <button
               key={key}

@@ -13,7 +13,7 @@ export const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="pt-16 px-4 relative">
+    <section id="about" className="px-4 relative">
       {" "}
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
