@@ -1,6 +1,17 @@
-import { Briefcase, Code, User } from "lucide-react";
+import { Briefcase, Code, User, Code2, FileDown } from "lucide-react";
 
 export const AboutSection = () => {
+  const handleDownloadCV = () => {
+    // Replace this URL with the actual path to your CV PDF file
+    const cvUrl = "/cv/Resume_of_Mohammad_Anamul.pdf"; // Update this path
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = "Resume_of_Mohammad_Anamul.pdf"; // Set the downloaded file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="about" className="pt-16 px-4 relative">
       {" "}
@@ -33,17 +44,17 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button  py-2 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn flex items-center justify-center">
-                {" "}
+              <a href="#contact" className="cosmic-button py-2 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold transition-all duration-300 group/btn flex items-center justify-center">
                 Get In Touch
               </a>
 
-              <a
-                href=""
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+              <button
+                onClick={handleDownloadCV}
+                className="px-6 cursor-pointer py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center gap-2"
               >
+                <FileDown className="h-4 w-4" />
                 Download CV
-              </a>
+              </button>
             </div>
           </div>
 
@@ -57,36 +68,37 @@ export const AboutSection = () => {
                   <h4 className="font-semibold text-lg">Web Developer</h4>
                   <p className="text-muted-foreground">
                     Creating responsive websites and web applications with
-                    modern frameworks.
+                    modern frameworks like React, Next.js, and Node.js.
                   </p>
                 </div>
               </div>
             </div>
+            
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
+                  <Code2 className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">WordPress Developer(theme customization)</h4>
+                  <h4 className="font-semibold text-lg">WordPress Developer</h4>
                   <p className="text-muted-foreground">
-                    Creating responsive websites and web applications with
-                    modern frameworks.
+                    Custom theme development, plugin customization, and performance 
+                    optimization for WordPress websites with WooCommerce integration.
                   </p>
                 </div>
               </div>
             </div>
+            
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
-
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">Project Management</h4>
                   <p className="text-muted-foreground">
                     Leading projects from conception to completion with agile
-                    methodologies.
+                    methodologies, client communication, and timely delivery.
                   </p>
                 </div>
               </div>
