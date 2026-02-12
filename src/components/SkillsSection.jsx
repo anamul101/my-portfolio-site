@@ -177,7 +177,7 @@ const CircularProgress = ({ percentage, skillName }) => {
 
       {/* Title at Bottom */}
       <div className="mt-2 text-center">
-        <h3 className="text-xl font-bold text-white/40 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
+        <h3 className="text-lg font-bold text-white/80 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
           {skillName}
         </h3>
         <div className="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500 scale-x-0 group-hover:scale-x-100" />

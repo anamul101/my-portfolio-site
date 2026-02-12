@@ -173,7 +173,7 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-full  py-2 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}

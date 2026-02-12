@@ -33,7 +33,7 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
+              <a href="#contact" className="cosmic-button  py-2 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn flex items-center justify-center">
                 {" "}
                 Get In Touch
               </a>
@@ -54,10 +54,10 @@ export const AboutSection = () => {
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Software Engineer</h4>
+                  <h4 className="font-semibold text-lg">Web Developer</h4>
                   <p className="text-muted-foreground">
-                    A software engineer applies engineering principles to design, 
-                    develop, test, and maintain software systems.
+                    Creating responsive websites and web applications with
+                    modern frameworks.
                   </p>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export const AboutSection = () => {
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Web Developer</h4>
+                  <h4 className="font-semibold text-lg">WordPress Developer(theme customization)</h4>
                   <p className="text-muted-foreground">
                     Creating responsive websites and web applications with
                     modern frameworks.
