@@ -4,6 +4,65 @@ import { ArrowRight, ExternalLink, Github, Info, X } from "lucide-react";
 const projects = [
   {
     id: 1,
+    title: "School Management System",
+    description: "Full-stack school management system with student and teacher management",
+    image: "/projects/project6.png",
+    tags: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Next.js",
+      "TailwindCSS",
+      "Express.js"
+    ],
+    demoUrl: "https://www.govtmollartekuhss.edu.bd/",
+    githubUrl: "#",
+    projectdetailsUrl: "/projects/school-management-system",
+    completedAt: "November 11, 2025",
+    fullDescription:
+      "A complete school management system with student and teacher management, attendance tracking, and grade reporting.",
+    features: [
+      "Student Management",
+      "Teacher Management",
+      "Attendance Tracking",
+      "PDF viewer",
+      "Class Scheduling",
+      "Admin Dashboard",
+    ],
+    technologies: ["React", "Node.js", "MongoDB", "Next.js", "Tailwind CSS"],
+  },
+  {
+    id: 2,
+    title: "E-commerce Platform",
+    description: "Full-stack e-commerce platform with payment integration",
+    image: "/projects/project5.png",
+    tags: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Stripe",
+      "TailwindCSS",
+      "Express.js"
+    ],
+    demoUrl: "https://shop-frontend-three.vercel.app/",
+    githubUrl: "https://github.com/anamul101/shop-frontend",
+    projectdetailsUrl: "/projects/ecommerce-platform",
+    completedAt: "July 4, 2023",
+    fullDescription:
+      "A complete e-commerce solution with product management, shopping cart, user authentication, and secure payment processing.",
+    features: [
+      "Product Catalog",
+      "Shopping Cart",
+      "User Authentication",
+      "Payment Processing",
+      "Order Management",
+      "Admin Dashboard",
+    ],
+    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+  },
+  
+  {
+    id: 3,
     title: "Used Products Resale",
     description: "A beautiful landing page app using React and Tailwind.",
     image: "/projects/project1.jpg",
@@ -49,7 +108,7 @@ const projects = [
     ],
   },
   {
-    id: 2,
+    id: 4,
     title: "Service Review App",
     description: "Interactive Service Review App with data visualization.",
     image: "/projects/project2.jpg",
@@ -80,7 +139,7 @@ const projects = [
     technologies: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
   },
   {
-    id: 3,
+    id: 5,
     title: "Learning Platform",
     description: "Full-featured Learning platform with user authentication",
     image: "/projects/project3.jpg",
@@ -110,7 +169,7 @@ const projects = [
     technologies: ["React", "Firebase", "Tailwind CSS", "React Router"],
   },
   {
-    id: 4,
+    id: 6,
     title: "Quiz Makers Web Application",
     description:
       "Quiz Makers web application with dynamic quiz generation and real-time scoring.",
@@ -131,35 +190,7 @@ const projects = [
     ],
     technologies: ["React", "Tailwind CSS", "React Router", "Context API"],
   },
-  {
-    id: 5,
-    title: "E-commerce Platform",
-    description: "Full-stack e-commerce platform with payment integration",
-    image: "/projects/project4.jpg",
-    tags: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Stripe",
-      "TailwindCSS",
-      "Express.js"
-    ],
-    demoUrl: "https://example-ecommerce.web.app/",
-    githubUrl: "https://github.com/anamul101/ecommerce-platform",
-    projectdetailsUrl: "/projects/ecommerce-platform",
-    completedAt: "November 5, 2023",
-    fullDescription:
-      "A complete e-commerce solution with product management, shopping cart, user authentication, and secure payment processing.",
-    features: [
-      "Product Catalog",
-      "Shopping Cart",
-      "User Authentication",
-      "Payment Processing",
-      "Order Management",
-      "Admin Dashboard",
-    ],
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-  },
+  
 ];
 
 // Project Details Modal Component
