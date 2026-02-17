@@ -54,7 +54,6 @@ const Counter = ({ value, duration = 2000, symbol = "" }) => {
     if (!isVisible) return;
 
     let start = 0;
-    // Remove '+' from value if present
     const numericValue = parseInt(value.toString().replace('+', '').replace('/', ''));
     const end = numericValue;
     const increment = end / (duration / 16);
@@ -79,6 +78,192 @@ const Counter = ({ value, duration = 2000, symbol = "" }) => {
   );
 };
 
+// Animation Component for Fade In Up
+const FadeInUp = ({ children, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation Component for Scale In
+const ScaleIn = ({ children, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        isVisible 
+          ? 'opacity-100 scale-100' 
+          : 'opacity-0 scale-75'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation Component for Slide In Left
+const SlideInLeft = ({ children, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        isVisible 
+          ? 'opacity-100 translate-x-0' 
+          : 'opacity-0 -translate-x-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation Component for Slide In Right
+const SlideInRight = ({ children, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        isVisible 
+          ? 'opacity-100 translate-x-0' 
+          : 'opacity-0 translate-x-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation Component for Floating Effect
+const FloatingAnimation = ({ children }) => {
+  return (
+    <div className="animate-float">
+      {children}
+    </div>
+  );
+};
+
+// Animation Component for Pulse Effect
+const PulseAnimation = ({ children }) => {
+  return (
+    <div className="animate-pulse-slow">
+      {children}
+    </div>
+  );
+};
+
 export default function ServiceSection() {
   const services = [
     {
@@ -90,9 +275,10 @@ export default function ServiceSection() {
         "React/Next.js Development",
         "Responsive Design",
         "Performance Optimization",
-        "Cross-browser Testing"
+        "Cross-browser Testing",
+        "While a business site with 5-10 pages."
       ],
-      price: "$999 - $4,999",
+      price: "$100 - $1,500",
       delivery: "2-4 weeks",
       color: "from-purple-500 to-indigo-500",
       tags: ["React", "Next.js", "Tailwind", "TypeScript"]
@@ -106,12 +292,13 @@ export default function ServiceSection() {
         "Node.js/Express",
         "Database Design",
         "API Development",
-        "Authentication"
+        "Authentication",
+        "While a business site with 5-10 pages."
       ],
-      price: "$1,499 - $6,999",
+      price: "$100 - $1,500",
       delivery: "3-6 weeks",
       color: "from-blue-500 to-cyan-500",
-      tags: ["Node.js", "Express.js", "MongoDB",, "AWS"]
+      tags: ["Node.js", "Express.js", "MongoDB", "AWS"]
     },
     {
       id: 3,
@@ -122,9 +309,10 @@ export default function ServiceSection() {
         "Full Stack MERN",
         "Real-time Features",
         "Payment Integration",
-        "DevOps & Deployment"
+        "DevOps & Deployment",
+        "While a business site with 5-10 pages."
       ],
-      price: "$2,999 - $9,999",
+      price: "$200 - $2,000",
       delivery: "4-8 weeks",
       color: "from-green-500 to-emerald-500",
       tags: ["MERN Stack", "Next.js", "PostgreSQL", "Docker"]
@@ -138,12 +326,13 @@ export default function ServiceSection() {
         "Custom Theme Development",
         "Plugin Development",
         "WooCommerce Setup",
-        "SEO Optimization"
+        "SEO Optimization",
+        "While a business site with 5-10 pages."
       ],
-      price: "$799 - $3,999",
+      price: "$100 - $1,500",
       delivery: "1-3 weeks",
       color: "from-blue-600 to-purple-600",
-      tags: ["Divi", "Astra",, "WooCommerce", "Elementor"]
+      tags: ["Divi", "Astra", "WooCommerce", "Elementor"]
     },
     {
       id: 5,
@@ -154,9 +343,10 @@ export default function ServiceSection() {
         "Page Speed Audit",
         "Image Optimization",
         "Caching Strategy",
-        "CDN Setup"
+        "CDN Setup",
+        "Full website with WP Rocket plugin"
       ],
-      price: "$499 - $2,499",
+      price: "$50 - $500",
       delivery: "1-2 weeks",
       color: "from-yellow-500 to-orange-500",
       tags: ["Lighthouse", "Webpack", "CDN", "Optimization"]
@@ -170,9 +360,10 @@ export default function ServiceSection() {
         "Shopify/WordPress",
         "Payment Gateway",
         "Product Management",
-        "Order Tracking"
+        "Order Tracking",
+        "While a business site with 5-10 pages."
       ],
-      price: "$1,999 - $7,999",
+      price: "$100 - $1,500",
       delivery: "3-5 weeks",
       color: "from-orange-500 to-red-500",
       tags: ["Shopify", "WooCommerce", "Stripe", "PayPal"]
@@ -180,119 +371,133 @@ export default function ServiceSection() {
   ];
 
   return (
-    <section id="services" className="pt-16">
+    <section id="services" className="lg:pt-16 overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          My <span className="text-primary"> Services</span>
-        </h2>
-         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          I provide complete web development & WordPress solutions
-        </p>
-         
-        </div>
+        {/* Header with animations */}
+        <FadeInUp>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              My <span className="text-primary"> Services</span>
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              I provide complete web development & WordPress solutions
+            </p>
+          </div>
+        </FadeInUp>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className="group relative "
-            >
-              {/* Card */}
-              <div className="relative cursor-pointer bg-gradient-to-br from-gray-800/30 to-gray-900/30  rounded-xl p-4 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 h-full overflow-hidden">
-                
-                {/* Animated Background Pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.4),transparent_50%)]" />
-                </div>
-
-                {/* Floating Icon Container */}
-                <div className="absolute left-1/2 -translate-x-1/2 z-20">
-                  <div className={`relative w-20 h-20 bg-gradient-to-br  rounded-full border border-gradient-to-br from-gray-900 to-gray-800 border-gray-600  flex items-center justify-center shadow-2xl group-hover:rotate-[360deg] transition-all duration-1500 ease-out`}>
-                    <div className="text-primary">
-                      {service.icon}
-                    </div>
-                    {/* Glow Effect */}
-                    <div className={`absolute inset-0 ${service.color} rounded-full blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-700`} />
-                  </div>
-                </div>
-
-                {/* Service Number */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center">
-                  <span className="text-gray-300 text-sm font-bold">0{service.id}</span>
-                </div>
-
-                {/* Content */}
-                <div className="pt-25">
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {service.tags.map((tag, index) => (
-                      <span 
-                        key={index}
-                        className="px-3 py-1 bg-gray-800 border border-gray-700 rounded-full text-xs text-gray-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+          {services.map((service, index) => (
+            <FadeInUp key={service.id} delay={index * 100}>
+              <div className="group relative animate-card-enter" style={{ animationDelay: `${index * 100}ms` }}>
+                {/* Card */}
+                <div className="relative cursor-pointer bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-xl p-4 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 h-full overflow-hidden">
+                  
+           
+                  {/* Floating Icon Container */}
+                  <div className="absolute left-1/2 -translate-x-1/2 z-20">
+                    <FloatingAnimation>
+                      <div className={`relative w-20 h-20 bg-gradient-to-br rounded-full border border-gradient-to-br from-gray-900 to-gray-800 border-gray-600 flex items-center justify-center shadow-2xl group-hover:rotate-[360deg] transition-all duration-1500 ease-out`}>
+                        <div className="text-primary animate-bounce-slow">
+                          {service.icon}
+                        </div>
+                        {/* Glow Effect */}
+                        <div className={`absolute inset-0 ${service.color} rounded-full blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-700`} />
+                      </div>
+                    </FloatingAnimation>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-purple-300 group-hover:bg-clip-text transition-all duration-300">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Price & Delivery */}
-                  <div className="flex items-center justify-between mb-8 pt-6 border-t border-gray-700">
-                    <div>
-                      <div className="text-sm text-gray-400">Starting from</div>
-                      <div className="text-2xl font-bold text-green-500">{service.price}</div>
+                  {/* Service Number with animation */}
+                  <SlideInRight delay={index * 50}>
+                    <div className="absolute top-4 right-4 w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center">
+                      <span className="text-gray-300 text-sm font-bold animate-pulse-slow">0{service.id}</span>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm text-gray-400">Delivery Time</div>
-                      <div className="text-lg font-semibold text-gray-300">{service.delivery}</div>
+                  </SlideInRight>
+
+                  {/* Content */}
+                  <div className="pt-25">
+                    {/* Tags with staggered animation */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {service.tags.map((tag, tagIndex) => (
+                        <ScaleIn key={tagIndex} delay={tagIndex * 50}>
+                          <span 
+                            className="px-3 py-1 bg-gray-800 border border-gray-700 rounded-full text-xs text-gray-300 hover:scale-110 transition-transform duration-300"
+                          >
+                            {tag}
+                          </span>
+                        </ScaleIn>
+                      ))}
                     </div>
+
+                    {/* Title */}
+                    <SlideInLeft delay={index * 50}>
+                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-purple-300 group-hover:bg-clip-text transition-all duration-300">
+                        {service.title}
+                      </h3>
+                    </SlideInLeft>
+
+                    {/* Description */}
+                    <FadeInUp delay={index * 50}>
+                      <p className="text-gray-400 mb-6 leading-relaxed text-sm">
+                        {service.description}
+                      </p>
+                    </FadeInUp>
+
+                    {/* Features List */}
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, featureIndex) => (
+                        <SlideInLeft key={featureIndex} delay={featureIndex * 50}>
+                          <li className="flex items-start gap-3 group/feature">
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 animate-bounce-slow" style={{ animationDelay: `${featureIndex * 100}ms` }} />
+                            <span className="text-gray-300 text-sm">{feature}</span>
+                          </li>
+                        </SlideInLeft>
+                      ))}
+                    </ul>
+
+                    {/* Price & Delivery */}
+                    <div className="flex items-center justify-between mb-8 pt-6 border-t border-gray-700">
+                      <SlideInLeft delay={index * 50}>
+                        <div>
+                          <div className="text-sm text-gray-400">Starting from</div>
+                          <div className="text-2xl font-bold text-green-500 animate-pulse-slow">{service.price}</div>
+                        </div>
+                      </SlideInLeft>
+                      <SlideInRight delay={index * 50}>
+                        <div className="text-right">
+                          <div className="text-sm text-gray-400">Delivery Time</div>
+                          <div className="text-lg font-semibold text-gray-300">{service.delivery}</div>
+                        </div>
+                      </SlideInRight>
+                    </div>
+
+                    {/* CTA Button */}
+                    <FadeInUp delay={index * 50}>
+                      <button className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-xl text-gray-300 font-semibold hover:text-white cursor-pointer  transition-all duration-300 group/btn flex items-center justify-center gap-2">
+                        Get This Service
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform animate-pulse" />
+                      </button>
+                    </FadeInUp>
+
+                    {/* Popular Badge */}
+                    {service.id === 3 && (
+                      <PulseAnimation>
+                        <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-xs font-semibold text-white">
+                          Popular Service
+                        </div>
+                      </PulseAnimation>
+                    )}
                   </div>
 
-                  {/* CTA Button */}
-                  <button className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-xl text-gray-300 font-semibold hover:text-white hover:border-purple-500 hover:bg-gradient-to-r hover:from-purple-900/30 hover:to-purple-700/30 transition-all duration-300 group/btn flex items-center justify-center gap-2">
-                    Get This Service
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-
-                  {/* Popular Badge */}
-                  {service.id === 3 && (
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-xs font-semibold text-white animate-pulse">
-                      Popular Service
-                    </div>
-                  )}
+                 
                 </div>
-
-                {/* Hover Effect Gradient Border */}
-                <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-purple-500 group-hover:via-pink-500 group-hover:to-orange-500 opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10" />
               </div>
-            </div>
+            </FadeInUp>
           ))}
         </div>
 
         {/* Stats Bar with Auto Counter */}
-        <div className="mt-16">
+        <div className="my-16">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { 
@@ -324,37 +529,79 @@ export default function ServiceSection() {
                 color: "from-orange-500 to-red-500"
               }
             ].map((stat, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 text-center hover:border-purple-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
-              >
-                {/* Animated Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl opacity-50" />
-                
-                {/* Icon Container */}
-                <div className={`relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 border border-gray-600 bg-opacity-10 rounded-2xl mb-4 group-hover:rotate-12 transition-all duration-500`}>
-                  <div className="text-primary">
-                    {stat.icon}
-                  </div>
-                  {/* Glow Effect */}
-                  <div className={`absolute inset-0 ${stat.color} rounded-2xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
-                </div>
+              <ScaleIn key={index} delay={index * 100}>
+                <div 
+                  className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 text-center hover:border-purple-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                >
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl opacity-50 animate-pulse-slow" />
+                  
+                  {/* Icon Container */}
+                  <FloatingAnimation>
+                    <div className={`relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 border border-gray-600 bg-opacity-10 rounded-2xl mb-4 group-hover:rotate-12 transition-all duration-500`}>
+                      <div className="text-primary animate-bounce-slow">
+                        {stat.icon}
+                      </div>
+                      {/* Glow Effect */}
+                      <div className={`absolute inset-0 ${stat.color} rounded-2xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
+                    </div>
+                  </FloatingAnimation>
 
-                {/* Counter with Auto Increment */}
-                <div className="relative">
-                  <Counter value={stat.value} symbol={stat.symbol} />
-                  <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">
-                    {stat.label}
+                  {/* Counter with Auto Increment */}
+                  <div className="relative">
+                    <Counter value={stat.value} symbol={stat.symbol} />
+                    <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">
+                      {stat.label}
+                    </div>
                   </div>
-                </div>
 
-                {/* Decorative Element */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+                  {/* Decorative Element */}
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              </ScaleIn>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Add these styles to your global CSS or in a style tag */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
+        }
+        
+        @keyframes card-enter {
+          0% { opacity: 0; transform: scale(0.9); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulse-slow 2s ease-in-out infinite;
+        }
+        
+        .animate-card-enter {
+          animation: card-enter 0.5s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 }

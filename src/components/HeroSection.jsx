@@ -10,7 +10,7 @@ export const HeroSection = () => {
         {/* Text Content */}
         <div className="md:basis-2/3 w-full text-center md:text-left z-10">
           <div className="space-y-6">
-            <h1 className="text-2xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl md:text-6xl sm:text-6xl font-bold tracking-tight">
               {/* <span className="opacity-0 animate-fade-in"> Full-stack developer</span> */}
               <span className="bg-gradient-to-r from-purple-800 to-pink-600 inline-block text-transparent bg-clip-text opacity-0 animate-fade-in-delay-1">
                 {" "}
@@ -22,7 +22,7 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            <h1 className="text-3xl md:text-4xl">
+            <h1 className="text-2xl md:text-4xl">
               <span className="opacity-0 animate-fade-in"> Graduated</span>
               <span className="text-primary opacity-0 animate-fade-in-delay-1">
                 {" "}
@@ -35,7 +35,7 @@ export const HeroSection = () => {
               I focus on clean code, smooth user experiences, and visuals that make a strong impact.
             </p>
 
-            <div className="pt-4 opacity-0 animate-fade-in-delay-4 gap-4 flex justify-center md:justify-start">
+            <div className=" mb-4 opacity-0 animate-fade-in-delay-4 gap-4 flex justify-center md:justify-start">
               <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold  transition-all duration-300 group/btn">
                 Fiverr
               </a>
@@ -67,7 +67,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <a href="#about" className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+      <a href="#about" className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
         <span className="text-sm text-muted-foreground mb-2">Scroll</span>
         <ArrowDown className="h-5 w-5 text-primary" />
       </a>

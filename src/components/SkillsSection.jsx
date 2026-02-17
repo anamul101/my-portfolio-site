@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const skills = [
   // Frontend
@@ -41,7 +42,7 @@ const skills = [
 const categories = ["all", "frontend", "backend", "tools", "SoftSkills"];
 
 // Circular Progress Bar Component
-const CircularProgress = ({ percentage, skillName }) => {
+const CircularProgress = ({ percentage, skillName, index }) => {
   const [progress, setProgress] = useState(0);
   const circleRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -101,7 +102,14 @@ const CircularProgress = ({ percentage, skillName }) => {
   };
 
   return (
-    <div ref={circleRef} className="flex flex-col items-center justify-center group">
+    <motion.div 
+      ref={circleRef} 
+      className="flex flex-col items-center justify-center group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      whileHover={{ scale: 1.05 }}
+    >
       {/* SVG Circle */}
       <div className="relative w-30 h-30">
         {/* Background Circle */}
@@ -147,7 +155,7 @@ const CircularProgress = ({ percentage, skillName }) => {
           />
 
           {/* Progress Circle */}
-          <circle
+          <motion.circle
             cx="90"
             cy="90"
             r={radius}
@@ -157,67 +165,168 @@ const CircularProgress = ({ percentage, skillName }) => {
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
-            className="transition-all duration-300 ease-out filter drop-shadow-lg"
+            className="transition-all duration-300 ease-out"
             style={{ filter: "url(#glow)" }}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           />
         </svg>
 
         {/* Center Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <motion.div 
+          className="absolute inset-0 flex flex-col items-center justify-center"
+          initial={{ scale: 0 }}
+          animate={isVisible ? { scale: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             {Math.round(progress)}%
           </span>
-          {/* <span className="text-xs text-gray-400 mt-1">Proficiency</span> */}
-        </div>
+        </motion.div>
 
         {/* Decorative Rings */}
-        <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <motion.div 
+          className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-md opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
       </div>
 
       {/* Title at Bottom */}
-      <div className="mt-2 text-center">
+      <motion.div 
+        className="mt-2 text-center"
+        whileHover={{ y: -2 }}
+      >
         <h3 className="text-lg font-bold text-white/80 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
           {skillName}
         </h3>
-        <div className="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500 scale-x-0 group-hover:scale-x-100" />
-      </div>
-    </div>
+        <motion.div 
+          className="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500"
+          initial={{ scaleX: 0 }}
+          whileHover={{ scaleX: 1 }}
+        />
+      </motion.div>
+    </motion.div>
   );
 };
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const sectionRef = useRef(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const filteredSkills = skills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
 
+  const categoryStats = {
+    frontend: { value: "85%", color: "from-purple-500 to-pink-500" },
+    backend: { value: "70%", color: "from-blue-500 to-cyan-500" },
+    tools: { value: "78%", color: "from-yellow-500 to-orange-500" },
+    SoftSkills: { value: "82%", color: "from-green-500 to-emerald-500" },
+  };
+
   return (
-    <section id="skills" className="pt-20 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500 rounded-full blur-3xl" />
-      </div>
+    <motion.section 
+      ref={sectionRef}
+      id="skills" 
+      className="pt-20 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={isSectionVisible ? { opacity: 1 } : {}}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Background Decoration with Animation */}
+      <motion.div 
+        className="absolute inset-0 opacity-5"
+        initial={{ scale: 0.8 }}
+        animate={isSectionVisible ? { scale: 1 } : {}}
+        transition={{ duration: 1 }}
+      >
+        <motion.div 
+          className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl"
+          animate={{
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500 rounded-full blur-3xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      </motion.div>
 
       <div className="container mx-auto max-w-7xl relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          
+        {/* Header with Animation */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ y: -50, opacity: 0 }}
+          animate={isSectionVisible ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          My <span className="text-primary"> Skills</span>
-        </h2>
-         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Expertise across frontend, backend, tools, and soft skills
-        </p>
-         
-        </div>
+            Tech<span className="text-primary"> Stack</span>
+          </h2>
+          <motion.p 
+            className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isSectionVisible ? { opacity: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Expertise across frontend, backend, tools, and soft skills
+          </motion.p>
+        </motion.div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {/* Category Filters with Animation */}
+        <motion.div 
+          className="flex flex-wrap justify-center gap-4 mb-8"
+          initial={{ y: 20, opacity: 0 }}
+          animate={isSectionVisible ? { y: 0, opacity: 1 } : {}}
+          transition={{ delay: 0.3, duration: 0.6 }}
+        >
           {categories.map((category, key) => (
-            <button
+            <motion.button
               key={key}
               onClick={() => setActiveCategory(category)}
               className={cn(
@@ -226,41 +335,98 @@ export const SkillsSection = () => {
                   ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25 scale-105"
                   : "bg-gray-800/50 text-gray-300 hover:bg-gray-800 border border-gray-700 hover:border-purple-500"
               )}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={activeCategory === category ? { scale: [1, 1.05, 1] } : {}}
+              transition={{ duration: 0.3 }}
             >
               {category === "SoftSkills" ? "Soft Skills" : category}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Skills Grid - Circular Progress Bars */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-4">
-          {filteredSkills.map((skill, key) => (
-            <div
-              key={key}
-              
-            >
-              <CircularProgress percentage={skill.level} skillName={skill.name} />
-            </div>
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={activeCategory}
+            className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            {filteredSkills.map((skill, key) => (
+              <CircularProgress 
+                key={`${skill.name}-${key}`} 
+                percentage={skill.level} 
+                skillName={skill.name} 
+                index={key}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Overall Proficiency Summary */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { label: "Frontend", value: "85%", color: "from-purple-500 to-pink-500" },
-            { label: "Backend", value: "70%", color: "from-blue-500 to-cyan-500" },
-            { label: "Tools", value: "78%", color: "from-yellow-500 to-orange-500" },
-            { label: "Soft Skills", value: "82%", color: "from-green-500 to-emerald-500" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-4  bg-gray-800/30 rounded-xl border border-gray-700">
-              <div className={`text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+        {/* Overall Proficiency Summary with Animation */}
+        <motion.div 
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+          initial={{ y: 50, opacity: 0 }}
+          animate={isSectionVisible ? { y: 0, opacity: 1 } : {}}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          {Object.entries(categoryStats).map(([category, stat], index) => (
+            <motion.div 
+              key={index} 
+              className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700 backdrop-blur-sm"
+              whileHover={{ 
+                scale: 1.05,
+                borderColor: stat.color.split(' ')[1],
+                boxShadow: `0 0 20px ${stat.color.includes('purple') ? '#8b5cf6' : 
+                                               stat.color.includes('blue') ? '#3b82f6' : 
+                                               stat.color.includes('yellow') ? '#eab308' : 
+                                               '#10b981'}40`
+              }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={isSectionVisible ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+            >
+              <motion.div 
+                className={`text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              >
                 {stat.value}
+              </motion.div>
+              <div className="text-sm text-gray-400 mt-1 capitalize">
+                {category === "SoftSkills" ? "Soft Skills" : category}
               </div>
-              <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
-            </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Floating Particles for Decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-purple-500/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, 30, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+              }}
+            />
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
