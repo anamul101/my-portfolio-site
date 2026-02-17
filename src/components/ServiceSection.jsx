@@ -180,7 +180,7 @@ export default function ServiceSection() {
   ];
 
   return (
-    <section id="services" className="">
+    <section id="services" className="pt-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

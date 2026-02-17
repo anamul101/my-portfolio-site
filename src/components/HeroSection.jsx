@@ -36,13 +36,13 @@ export const HeroSection = () => {
             </p>
 
             <div className="pt-4 opacity-0 animate-fade-in-delay-4 gap-4 flex justify-center md:justify-start">
-              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn">
+              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold  transition-all duration-300 group/btn">
                 Fiverr
               </a>
-              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn">
+              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold  transition-all duration-300 group/btn">
                 Upwork
               </a>
-              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold  transition-all duration-300 group/btn">
+              <a href="#" target="_blank" className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold  transition-all duration-300 group/btn">
                 Freelancer
               </a>
             </div>
