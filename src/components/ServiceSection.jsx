@@ -101,7 +101,7 @@ export default function ServiceSection() {
       id: 2,
       icon: <Server className="w-8 h-8" />,
       title: "Backend Development",
-      description: "Scalable backend solutions with Node.js, Python, and cloud services. RESTful APIs, databases, and server infrastructure.",
+      description: "Scalable backend solutions with Node.js, Express.js, and cloud services. RESTful APIs, databases, and server infrastructure.",
       features: [
         "Node.js/Express",
         "Database Design",
@@ -111,7 +111,7 @@ export default function ServiceSection() {
       price: "$1,499 - $6,999",
       delivery: "3-6 weeks",
       color: "from-blue-500 to-cyan-500",
-      tags: ["Node.js", "Python", "MongoDB", "PostgreSQL"]
+      tags: ["Node.js", "Express.js", "MongoDB",, "AWS"]
     },
     {
       id: 3,
@@ -127,7 +127,7 @@ export default function ServiceSection() {
       price: "$2,999 - $9,999",
       delivery: "4-8 weeks",
       color: "from-green-500 to-emerald-500",
-      tags: ["MERN Stack", "Next.js", "AWS", "Docker"]
+      tags: ["MERN Stack", "Next.js", "PostgreSQL", "Docker"]
     },
     {
       id: 4,
@@ -143,7 +143,7 @@ export default function ServiceSection() {
       price: "$799 - $3,999",
       delivery: "1-3 weeks",
       color: "from-blue-600 to-purple-600",
-      tags: ["WordPress", "PHP", "WooCommerce", "Elementor"]
+      tags: ["Divi", "Astra",, "WooCommerce", "Elementor"]
     },
     {
       id: 5,
