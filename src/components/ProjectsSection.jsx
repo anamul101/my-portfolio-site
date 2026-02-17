@@ -530,7 +530,7 @@ export const ProjectsSection = () => {
     <motion.section 
       ref={sectionRef}
       id="projects" 
-      className="py-24 px-4 relative overflow-hidden"
+      className="py-16 px-4 relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={isSectionVisible ? { opacity: 1 } : {}}
       transition={{ duration: 0.8 }}
