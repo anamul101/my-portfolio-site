@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { ArrowRight, ExternalLink, Github, Info, X, Clock, CheckCircle, Code2 } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Info, X, Clock, CheckCircle, Code2, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -32,7 +32,7 @@ const projects = [
       "Admin Dashboard",
     ],
     technologies: ["Next.js", "Node.js", "MongoDB","React", "Tailwind CSS"],
-    status: "completed" // Add status field
+    status: "completed"
   },
   {
     id: 2,
@@ -62,7 +62,7 @@ const projects = [
       "Admin Dashboard",
     ],
     technologies: ["WordPress", "Elementor", "Contact Form 7", "Revolution Slider", "WooCommerce", "Yoast SEO"],
-    status: "completed" // Add status field
+    status: "completed"
   },
   {
     id: 3,
@@ -513,7 +513,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeType, setActiveType] = useState("completed"); // Default to "completed"
+  const [activeType, setActiveType] = useState("completed");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
   const sectionRef = useRef(null);
   const [isSectionVisible, setIsSectionVisible] = useState(false);
 
@@ -538,9 +540,20 @@ export const ProjectsSection = () => {
     };
   }, []);
 
+  // Reset to page 1 when filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeType]);
+
   const filteredProjects = projects.filter(
     (project) => activeType === "all" || project.status === activeType
   );
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -550,6 +563,63 @@ export const ProjectsSection = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Smooth scroll to top of projects grid
+    const projectsGrid = document.getElementById('projects-grid');
+    if (projectsGrid) {
+      projectsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1);
+    }
+  };
+
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const maxPagesToShow = 5;
+    
+    if (totalPages <= maxPagesToShow) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push('...');
+        pageNumbers.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pageNumbers.push(1);
+        pageNumbers.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pageNumbers.push(i);
+        }
+      } else {
+        pageNumbers.push(1);
+        pageNumbers.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push('...');
+        pageNumbers.push(totalPages);
+      }
+    }
+    
+    return pageNumbers;
   };
 
   // Calculate stats
@@ -672,142 +742,219 @@ export const ProjectsSection = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={activeType}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group cursor-pointer bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-2xl overflow-hidden shadow-xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
-                onClick={() => handleProjectClick(project)}
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  {/* Status Badge */}
-                  <motion.div 
-                    className="absolute top-4 right-4"
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {project.status === "ongoing" ? (
-                      <span className="flex items-center gap-1 px-3 py-1 bg-yellow-500/90 text-white rounded-full text-xs backdrop-blur-sm">
-                        <Clock size={12} />
-                        In Progress
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1 px-3 py-1 bg-green-500/90 text-white rounded-full text-xs backdrop-blur-sm">
-                        <CheckCircle size={12} />
-                        Completed
-                      </span>
-                    )}
-                  </motion.div>
-                </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-semibold mb-1 text-primary "
-                    whileHover={{ x: 5 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  <p className="text-gray-400 text-sm mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.slice(0, 3).map((tag, index) => (
-                      <motion.span
-                        key={index}
-                        className="px-2 py-1 text-xs font-medium border border-gray-700 rounded-full bg-gray-800/50 text-gray-300"
-                        whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <span className="px-2 py-1 text-xs font-medium text-gray-400">
-                        +{project.tags.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex justify-between items-center">
-                    <div className="flex space-x-3">
-                      <motion.a
-                        whileHover={{ scale: 1.2, color: "#8b5cf6" }}
-                        whileTap={{ scale: 0.9 }}
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-purple-500 transition-colors duration-300"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={20} />
-                      </motion.a>
-                      <motion.a
-                        whileHover={{ scale: 1.2, color: "#8b5cf6" }}
-                        whileTap={{ scale: 0.9 }}
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-purple-500 transition-colors duration-300"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Github size={20} />
-                      </motion.a>
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleProjectClick(project);
-                      }}
-                      className="cursor-pointer flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-white hover:border-purple-500 transition-all"
+        <div id="projects-grid">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeType + currentPage}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {currentProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
+                  className="group cursor-pointer bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-2xl overflow-hidden shadow-xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                  onClick={() => handleProjectClick(project)}
+                >
+                  <div className="h-48 overflow-hidden relative">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    {/* Status Badge */}
+                    <motion.div 
+                      className="absolute top-4 right-4"
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
                     >
-                      <Info size={16} />
-                      Details
-                    </motion.button>
+                      {project.status === "ongoing" ? (
+                        <span className="flex items-center gap-1 px-3 py-1 bg-yellow-500/90 text-white rounded-full text-xs backdrop-blur-sm">
+                          <Clock size={12} />
+                          In Progress
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 px-3 py-1 bg-green-500/90 text-white rounded-full text-xs backdrop-blur-sm">
+                          <CheckCircle size={12} />
+                          Completed
+                        </span>
+                      )}
+                    </motion.div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                  <div className="p-6">
+                    <motion.h3 
+                      className="text-xl font-semibold mb-1 text-primary "
+                      whileHover={{ x: 5 }}
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.slice(0, 3).map((tag, index) => (
+                        <motion.span
+                          key={index}
+                          className="px-2 py-1 text-xs font-medium border border-gray-700 rounded-full bg-gray-800/50 text-gray-300"
+                          whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+                        >
+                          {tag}
+                        </motion.span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span className="px-2 py-1 text-xs font-medium text-gray-400">
+                          +{project.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
 
-        {/* GitHub Button */}
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isSectionVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
-        >
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-3 cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold  transition-all duration-300 group/btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/anamul101"
+                    <div className="flex justify-between items-center">
+                      <div className="flex space-x-3">
+                        <motion.a
+                          whileHover={{ scale: 1.2, color: "#8b5cf6" }}
+                          whileTap={{ scale: 0.9 }}
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-purple-500 transition-colors duration-300"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink size={20} />
+                        </motion.a>
+                        <motion.a
+                          whileHover={{ scale: 1.2, color: "#8b5cf6" }}
+                          whileTap={{ scale: 0.9 }}
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-purple-500 transition-colors duration-300"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Github size={20} />
+                        </motion.a>
+                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleProjectClick(project);
+                        }}
+                        className="cursor-pointer flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-white hover:border-purple-500 transition-all"
+                      >
+                        <Info size={16} />
+                        Details
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Pagination and GitHub Button */}
+        {filteredProjects.length > 0 && (
+          <motion.div 
+            className="flex flex-col sm:flex-row justify-between items-center gap-6 mt-12"
+            initial={{ y: 20, opacity: 0 }}
+            animate={isSectionVisible ? { y: 0, opacity: 1 } : {}}
+            transition={{ delay: 0.6 }}
           >
-            Check My GitHub <ArrowRight size={16} />
-          </motion.a>
-        </motion.div>
+            {/* GitHub Button - Left Side */}
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-8 py-3 cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-md text-gray-300 font-semibold transition-all duration-300 group/btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/anamul101"
+            >
+              Check My GitHub <ArrowRight size={16} />
+            </motion.a>
+
+            {/* Pagination - Right Side */}
+            {totalPages > 1 && (
+              <div className="flex items-center gap-2">
+                {/* Previous Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handlePreviousPage}
+                  disabled={currentPage === 1}
+                  className={cn(
+                    "p-2 rounded-lg border transition-all duration-300",
+                    currentPage === 1
+                      ? "border-gray-800 text-gray-600 cursor-not-allowed"
+                      : "border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-purple-500 hover:border-purple-500 cursor-pointer"
+                  )}
+                >
+                  <ChevronLeft size={20} />
+                </motion.button>
+
+                {/* Page Numbers */}
+                {getPageNumbers().map((page, index) => (
+                  page === '...' ? (
+                    <span key={`dots-${index}`} className="px-3 py-2 text-gray-500">
+                      ...
+                    </span>
+                  ) : (
+                    <motion.button
+                      key={page}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handlePageChange(page)}
+                      className={cn(
+                        "w-10 h-10 rounded-lg border transition-all duration-300 font-medium cursor-pointer",
+                        currentPage === page
+                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-transparent shadow-lg shadow-purple-500/25"
+                          : "border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-purple-500 hover:border-purple-500"
+                      )}
+                    >
+                      {page}
+                    </motion.button>
+                  )
+                ))}
+
+                {/* Next Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages}
+                  className={cn(
+                    "p-2 rounded-lg border transition-all duration-300",
+                    currentPage === totalPages
+                      ? "border-gray-800 text-gray-600 cursor-not-allowed"
+                      : "border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-purple-500 hover:border-purple-500 cursor-pointer"
+                  )}
+                >
+                  <ChevronRight size={20} />
+                </motion.button>
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {/* No Projects Message */}
+        {filteredProjects.length === 0 && (
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <p className="text-gray-400 text-lg">No projects found in this category.</p>
+          </motion.div>
+        )}
 
         {/* Floating Particles */}
         <div className="absolute inset-0 pointer-events-none">

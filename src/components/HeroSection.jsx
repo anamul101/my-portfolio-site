@@ -75,7 +75,7 @@ export const HeroSection = () => {
                 <a 
                   href="#" 
                   target="_blank" 
-                  className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
+                  className=" bg-gray-800 text-white border border-purple-500 cursor-pointer rounded-full hover:shadow-md hover:shadow-purple-500/50  font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
                 >
                   <SiFiverr className="w-6 h-6" />
                 </a>
@@ -90,7 +90,7 @@ export const HeroSection = () => {
                 <a 
                   href="#" 
                   target="_blank" 
-                  className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
+                  className="bg-gray-800 text-white border border-purple-500 cursor-pointer rounded-full hover:shadow-md hover:shadow-purple-500/50  font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
                 >
                   <SiUpwork className="w-6 h-6" />
                 </a>
@@ -105,7 +105,7 @@ export const HeroSection = () => {
                 <a 
                   href="#" 
                   target="_blank" 
-                  className="cosmic-button bg-gradient-to-r from-gray-600 to-gray-900 border border-gray-700 rounded-full text-gray-300 font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
+                  className="bg-gray-800 text-white border border-purple-500 cursor-pointer rounded-full hover:shadow-md hover:shadow-purple-500/50  font-semibold transition-all duration-300 group/btn p-3 flex items-center justify-center"
                 >
                   <SiFreelancer className="w-6 h-6" />
                 </a>
