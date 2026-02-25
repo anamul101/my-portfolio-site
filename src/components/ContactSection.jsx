@@ -257,10 +257,10 @@ export const ContactSection = () => {
                 variants={containerVariants}
               >
                 {[
-                  { icon: Linkedin, href: "https://linkedin.com/in/yourusername" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/mohammad-anamul/" },
                   { icon: Twitter, href: "https://twitter.com/yourusername" },
-                  { icon: Instagram, href: "https://instagram.com/yourusername" },
-                  { icon: Facebook, href: "https://facebook.com/yourusername" }
+                  { icon: Instagram, href: "https://www.instagram.com/gstaranamul?igsh=MWdicDU3ZGVveXAyMw==" },
+                  { icon: Facebook, href: "https://www.facebook.com/gstar.anamul" }
                 ].map((social, index) => (
                   <motion.a
                     key={index}

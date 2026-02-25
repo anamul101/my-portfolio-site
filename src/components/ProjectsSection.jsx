@@ -8,7 +8,7 @@ const projects = [
     id: 1,
     title: "School Management System",
     description: "Full-stack school management system with student and teacher management",
-    image: "/projects/project6.png",
+    image: "/projects/school.png",
     tags: [
       "Next.js",
       "Node.js",
@@ -38,7 +38,37 @@ const projects = [
     id: 2,
     title: "E-commerce Platform",
     description: "Full-stack e-commerce platform with payment integration",
-    image: "/projects/project5.png",
+    image: "/projects/fancyloom.png",
+    tags: [
+      "WordPress",
+      "Elementor",
+      "Contact Form 7",
+      "Revolution Slider",
+      "WooCommerce",
+      "Yoast SEO"
+    ],
+    demoUrl: "https://fancyloom.com/",
+    githubUrl: "#",
+    projectdetailsUrl: "/projects/ecommerce-platform",
+    completedAt: "February 20, 2026",
+    fullDescription:
+      "A complete e-commerce solution with product management, shopping cart, user authentication, and secure payment processing.",
+    features: [
+      "Product Catalog",
+      "Shopping Cart",
+      "User Authentication",
+      "Payment Processing",
+      "Order Management",
+      "Admin Dashboard",
+    ],
+    technologies: ["WordPress", "Elementor", "Contact Form 7", "Revolution Slider", "WooCommerce", "Yoast SEO"],
+    status: "completed" // Add status field
+  },
+  {
+    id: 3,
+    title: "E-commerce Platform",
+    description: "Full-stack e-commerce platform with payment integration",
+    image: "/projects/shop.png",
     tags: [
       "React",
       "Node.js",
@@ -65,7 +95,7 @@ const projects = [
     status: "completed"
   },
   {
-    id: 7,
+    id: 4,
     title: "AI-Powered Analytics Dashboard",
     description: "Advanced analytics platform with AI-driven insights and real-time data visualization",
     image: "/projects/project7.png",
@@ -94,7 +124,7 @@ const projects = [
     status: "ongoing"
   },
   {
-    id: 8,
+    id: 5,
     title: "Mobile-First Social Platform",
     description: "Cross-platform social networking app with real-time messaging",
     image: "/projects/project8.png",
@@ -124,10 +154,10 @@ const projects = [
     status: "ongoing"
   },
   {
-    id: 3,
+    id: 6,
     title: "Used Products Resale",
     description: "A beautiful landing page app using React and Tailwind.",
-    image: "/projects/project1.jpg",
+    image: "/projects/project3.png",
     tags: [
       "JavaScript",
       "ReactJs",
@@ -170,7 +200,7 @@ const projects = [
     status: "completed"
   },
   {
-    id: 4,
+    id: 7,
     title: "Service Review App",
     description: "Interactive Service Review App with data visualization.",
     image: "/projects/project2.jpg",
@@ -202,7 +232,7 @@ const projects = [
     status: "completed"
   },
   {
-    id: 5,
+    id: 8,
     title: "Learning Platform",
     description: "Full-featured Learning platform with user authentication",
     image: "/projects/project3.jpg",
@@ -233,7 +263,7 @@ const projects = [
     status: "completed"
   },
   {
-    id: 6,
+    id: 9,
     title: "Quiz Makers Web Application",
     description:
       "Quiz Makers web application with dynamic quiz generation and real-time scoring.",

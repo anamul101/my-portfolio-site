@@ -448,7 +448,7 @@ export default function ServiceSection() {
                       {service.features.map((feature, featureIndex) => (
                         <SlideInLeft key={featureIndex} delay={featureIndex * 50}>
                           <li className="flex items-start gap-3 group/feature">
-                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 animate-bounce-slow" style={{ animationDelay: `${featureIndex * 100}ms` }} />
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" style={{ animationDelay: `${featureIndex * 100}ms` }} />
                             <span className="text-gray-300 text-sm">{feature}</span>
                           </li>
                         </SlideInLeft>
